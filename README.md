@@ -8,7 +8,7 @@
 
 Inicializar o projeto:
 
-```console
+```bash
 ~$ go mod init github.com/Brun0Nasc/projeto
 ```
 
@@ -53,13 +53,13 @@ Depois disso adicione `app.env` a um arquivo `.gitignore`.
 
 Com tudo isso configurado, é hora de rodar o docker-compose:
 
-```console
+```bash
 ~$ docker compose up -d
 ```
 
 Para parar de rodar o container:
 
-```console
+```bash
 ~$ docker compose down
 ```
 
@@ -76,7 +76,7 @@ Alguns comandos essenciais:
 
 Criar um diretório para armazenar as migrations: `db/migrations` e criar novos arquivos **up/down** dentro do diretório:
 
-```console
+```bash
 ~$ migrate create -ext sql -dir db/migrations -seq init_schema
 ```
 
