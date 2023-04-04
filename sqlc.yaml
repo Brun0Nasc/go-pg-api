@@ -1,0 +1,11 @@
+version: "1"
+packages:
+  - name: 'db' # especifica o nome do pacote Golang gerado
+    path: './db/sqlc' # especifica o caminho do diretório que os arquivos gerados serão armazenados
+    queries: './db/query' # especifica a localização dos arquivos query
+    schema: './db/migrations' # especifica o caminho para o diretório onde as SQL migrations estão armazenadas
+    engine: 'postgresql' # especifica que banco de dados será usado, pode ser PostgreSQL ou MySQL
+    emit_prepared_queries: true # diz pro sqlc ativar ou desativar suporte para prepared queries
+    emit_interface: false # diz pro sqlc para incluir ou excluir a Querier interface no pacote gerado.
+    emit_exact_table_names: false # se for falso, o sqlc vai deixar no singular os nomes de tabela que são plural. Se não, os structs terão os mesmos nomes das tabelas 
+    emit_json_tags: true # diz por sqlc adicionar JSON tags nos structs gerados
