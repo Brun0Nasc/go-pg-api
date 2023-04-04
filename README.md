@@ -83,3 +83,12 @@ Criar um diretório para armazenar as migrations: `db/migrations` e criar novos 
 * `-ext` - indica a estenção dos arquivos de migração **up/down**
 * `-dir` - indica o diretório onde serão armazenados esses arquivos de migração
 * `-seq` - manda a biblioteca `golang-migrate` gerar uma um número de versões sequencial para os arquivos de migração
+
+Agora, no arquivo de **up** gerado, encontrado em `db/migrations/000001_init_schema.up.sql`, eu adicionei a minha primeira tabela do meu banco de dados, com suas funções e parâmetros especificados.
+
+No arquivo **down**, os comandos devem desfazer o que é feito no arquivo de criação das tabelas, isso permite voltar a uma versão anterior do banco, desfazendo as mudanças feitas no arquivo **up** mais recente.
+
+Para executar o script de up migration, o seguinte comando:
+```bash
+~$ migrate -path db/migrations -database "postgresql://user:password@host:6500database_name?sslmode=disable" -verbose up
+```
