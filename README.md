@@ -133,3 +133,17 @@ Para instalar o viper:
 ```
 
 Depois disso, criamos o arquivo `config/default.go` na pasta raiz do projeto, as configurações do arquivo podem ser encontrados nesse exato diretório.
+
+---
+
+## **PASSO 5**
+
+Nessa parte, criamos os Request Validation Structs, que são as estruturas que serão usadas nas requisições.
+
+Elas ficarão armazenadas em `schemas/diretor.schema.go`. Nesse caso, tem os structs de Create e Update.
+
+---
+
+## **PASSO 6**
+
+Fazendo agora.
