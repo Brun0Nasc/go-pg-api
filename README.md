@@ -1,6 +1,6 @@
 # **PASSOS PARA CRIAÇÃO DA API**
 
-* Essa é uma tradução e adaptação do guia encontrado [aqui](https://codevoweb.com/golang-crud-restful-api-with-sqlc-and-postgresql/).
+* Essa é uma tradução e adaptação do guia encontrado [aqui](https://codevoweb.com/golang-crud-restful-api-with-sqlc-and-postgresql/). O obetivo dessa versão é facilitar o acesso a alguns comandos e configurações importantes.
 
 ---
 
@@ -63,6 +63,8 @@ Para parar de rodar o container:
 ~$ docker compose down
 ```
 
+---
+
 ## **PASSO 2**
 
 A ferramenta de Migrations utilizada é a biblioteca `golang-migrate` [que pode ser encontrada aqui](https://github.com/golang-migrate/migrate/tree/master/cmd/migrate).
@@ -89,6 +91,45 @@ Agora, no arquivo de **up** gerado, encontrado em `db/migrations/000001_init_sch
 No arquivo **down**, os comandos devem desfazer o que é feito no arquivo de criação das tabelas, isso permite voltar a uma versão anterior do banco, desfazendo as mudanças feitas no arquivo **up** mais recente.
 
 Para executar o script de up migration, o seguinte comando:
+
 ```bash
 ~$ migrate -path db/migrations -database "postgresql://user:password@host:6500database_name?sslmode=disable" -verbose up
 ```
+
+Para reverter as mudanças feitas pela up migration, é só rodar o script de down migration:
+
+```bash
+~$ migrate -path db/migrations -database "postgresql://user:password@host:6500database_name?sslmode=disable" -verbose down
+```
+
+---
+
+## **PASSO 3**
+
+Nessa API, o CRUD é gerado com o sqlc, que precisa estar instalado.
+
+Para gerar o arquivo `sqlc.yaml` vazio, usamos o comando
+
+```bash
+~$ sqlc init
+```
+
+O conteúdo de configuração do arquivo pode ser conferido em `sqlc.yaml`, que está na pasta raiz.
+
+Depois disso, criamos duas pastas: **db/sqlc** e **db/query**, dentro de **db/query** ficam os arquivos .sql que serão usados para especificar as funções do CRUD das entidades da API, nesse caso, o primeiro que criei foi `diretor.sql`.
+
+Quando especificar as funções semelhantes às do arquivo `diretor.sql`, é importante rodar um `go mod tidy` para instalar as dependências do sqlc.
+
+---
+
+## **PASSO 4**
+
+Esse passo é referente a carregar as variáveis de ambiente do projeto, nesse caso será usado o pacote Viper.
+
+Para instalar o viper:
+
+```bash
+~$ go get github.com/spf13/viper
+```
+
+Depois disso, criamos o arquivo `config/default.go` na pasta raiz do projeto, as configurações do arquivo podem ser encontrados nesse exato diretório.
