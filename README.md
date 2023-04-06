@@ -146,4 +146,4 @@ Elas ficarão armazenadas em `schemas/diretor.schema.go`. Nesse caso, tem os str
 
 ## **PASSO 6**
 
-Fazendo agora.
+Aqui vamos criar basicamente os controladores de rota, que vão chamar e tratar as operações CRUD das entidades que criamos, o código completo pode ser encontrado em `controllers/diretor.controller.go`.
