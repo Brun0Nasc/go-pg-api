@@ -22,4 +22,5 @@ func (dc *DiretorRoutes) DiretorRoute(rg *gin.RouterGroup) {
 	router.GET("/:id", dc.diretorController.GetDiretorById)
 	router.DELETE("/:id", dc.diretorController.DeleteDiretor)
 	
+	
 }
